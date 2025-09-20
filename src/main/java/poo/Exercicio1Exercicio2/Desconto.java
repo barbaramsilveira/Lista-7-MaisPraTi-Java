@@ -1,45 +1,28 @@
-package poo.Exercício1Exercicio2;
-public class Produto {
+package poo.Exercicio1Exercicio2;
+
+public class Desconto {
     private String nome;
     private double preco;
     private int quantidadeEmEstoque;
+    private int porcentagem;
 
-    public Produto(String nome, double preco, int quantidadeEmEstoque) {
+    public Desconto(String nome, double preco, int quantidadeEmEstoque, int porcentagem) {
         setNome(nome);
         setPreco(preco);
         setQuantidadeEmEstoque(quantidadeEmEstoque);
+        setPorcentagem(porcentagem);
     }
 
-    public Produto() {
+
+    public int getPorcentagem() {
+        return porcentagem;
     }
 
-    public static void main(String[] args) {
-        try{
-            Produto produtoNovo = new Produto("Calça Jeans", 300.00, 2);
-            produtoNovo.exibeInfo();
-        }catch(IllegalArgumentException exception){
-            exception.printStackTrace();
-        }
+    public void setPorcentagem(int porcentagem) {
+        this.porcentagem = porcentagem;
+    }
 
-        try{
-            Produto produtoNovo = new Produto("", 1, 2);
-            produtoNovo.exibeInfo();
-        }catch(IllegalArgumentException exception){
-            exception.printStackTrace();
-        }
-        try{
-            Produto produtoNovo = new Produto("Boneca", -1, 2);
-            produtoNovo.exibeInfo();
-        }catch(IllegalArgumentException exception){
-            exception.printStackTrace();
-        }
-
-        try{
-            Produto produtoNovo = new Produto("Brinquedo", 1, -5);
-            produtoNovo.exibeInfo();
-        }catch(IllegalArgumentException exception){
-            exception.printStackTrace();
-        }
+    public Desconto() {
     }
 
     public String getNome() {
@@ -74,11 +57,31 @@ public class Produto {
         }
         this.quantidadeEmEstoque = quantidadeEmEstoque;
     }
+
     public void exibeInfo(){
         System.out.println("Nome: " + nome);
         System.out.println("Preco: " + preco);
         System.out.println("Quantidade: " + quantidadeEmEstoque);
     }
+
+    public void aplicarDesconto(double porcentagem) {
+        if (porcentagem < 0 || porcentagem > 50) {
+            throw new IllegalArgumentException("O desconto deve estar entre 0% e 50%");
+        }
+        preco = preco * (1 - porcentagem / 100);
+    }
+
+    public static void main(String[] args) {
+        Desconto produto = new Desconto("Calça Jeans", 500, 5, 50);
+        System.out.println("Preço antes do desconto: " + produto.getPreco());
+
+        produto.aplicarDesconto(50);
+        System.out.println("Preço depois do desconto de " + produto.porcentagem + "%: " + produto.getPreco());
+
+        try {
+            produto.aplicarDesconto(60); // desconto inválido
+        } catch (IllegalArgumentException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
 }
-
-
