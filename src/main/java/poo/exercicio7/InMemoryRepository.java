@@ -16,7 +16,6 @@ public class InMemoryRepository<T extends Identificavel<ID>, ID> implements IRep
 
     @Override
     public List<T> listarTodos() {
-        // Retorna uma cópia imutável da lista de valores
         return Collections.unmodifiableList(new ArrayList<>(repositorio.values()));
     }
 
