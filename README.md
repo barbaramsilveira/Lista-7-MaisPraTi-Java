@@ -2,7 +2,21 @@
 
 ### Nessa lista tivemos o desafio de realizar 8 exercícios na linguagem Java sem frameworks. O Objetivo é desenvolver as habilidades em Programação Orientada a Objetos, dentro dos pilares de Abstração, Herança, Polimorfismo e Encapsulamento.
 
-Segue enunciado da lista: 
+****
+
+<h3>Pré-requisitos:</h3>
+
+- Java JDK 11 ou superior instalado.
+
+- IDE (IntelliJ, Eclipse, VSCode).
+
+- Git.
+
+Após clonar a pasta para o seu computador, abra na sua IDE e navegue até o package de cada exercício que deseje executar.
+
+****
+
+### Segue enunciado da lista: 
 
 <h3>Exercício 1 — Encapsulamento (Classe Produto)</h3>
 Implemente a classe Produto com atributos privados nome, preco e
